@@ -1,50 +1,16 @@
-<!doctype html>
-<html>
-<head>
-    <title>ng2do</title>
-    <style media="screen">
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
+﻿<!DOCTYPE html>
 
-        body {
-            font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            line-height: 1.4em;
-            background: #eaeaea url('css/bg.png');
-            color: #4d4d4d;
-            width: 550px;
-            margin: 0 auto;
-            -webkit-font-smoothing: antialiased;
-            -moz-font-smoothing: antialiased;
-            -ms-font-smoothing: antialiased;
-            -o-font-smoothing: antialiased;
-            font-smoothing: antialiased;
-        }
-    </style>
-    <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.87/traceur-runtime.js"></script>
-    <script src="/typings/typescript/typescript.js"></script>
-    <script src="/typings/es6/dist/es6-module-loader-dev.js"></script>
-    <script src="/typings/system/system.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-alpha.26/angular2.dev.js"></script>
-    <script src="/firebase/firebase.js"></script>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
 </head>
 <body>
-    <todo-app>Loading...</todo-app>
-    <script>
-        System.config({
-            transpiler: "typescript",
-            typescriptOptions: {
-                emitDecoratorMetadata: true,
-                experimentalDecorators: true
-            }
-        });
-        System.paths = {
-            "firebase/angularfire": "firebase/angularfire.js",
-            "todo": "todo.ts"
-        };
-        System.import('todo');
-    </script>
+    <h1>TypeScript HTML App</h1>
+
+    <div id="content"></div>
+    <input type="file" id="files" name="files[]" multiple/>
+    <script src="all.js"></script>
 </body>
 </html>
