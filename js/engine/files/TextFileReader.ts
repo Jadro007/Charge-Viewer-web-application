@@ -14,13 +14,15 @@
 
         public read(files: FileList): void {
             for (var i in files) {
-                var fileReader = new FileReader();
+                if (files.hasOwnProperty(i)) {
+                    var fileReader = new FileReader();
 
-                fileReader.onprogress = this.readProgress(files[i]);
-                fileReader.onloadend = this.readComplete(files[i]);
-                fileReader.onerror = this.readError(files[i]);
+                    fileReader.onprogress = this.readProgress(files[i]);
+                    fileReader.onloadend = this.readComplete(files[i]);
+                    fileReader.onerror = this.readError(files[i]);
 
-                fileReader.readAsText(files[i]);
+                    fileReader.readAsText(files[i]);
+                }
             }
         }
 

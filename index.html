@@ -10,9 +10,13 @@
     <script src="https://code.angularjs.org/2.0.0-alpha.36/angular2.dev.js"></script>
     <script src="https://code.angularjs.org/2.0.0-alpha.36/http.js"></script>
     <script src="https://code.angularjs.org/2.0.0-alpha.36/router.dev.js"></script>
+
+    <script src="http://web.chemdoodle.com/wp-includes/js/jquery/jquery.js?ver=1.7.2"></script>
+    <script src="./library/ChemDoodleWeb/ChemDoodleWeb-unpacked.js"></script>
+    <script src="./library/ChemDoodleWeb/ChemDoodleWeb-uis-unpacked.js"></script>
+    <script src="./all.js"></script>
 </head>
 <body>
-    <h1>TypeScript HTML App</h1>
 
     <div id="content">
         <my-app></my-app>
@@ -38,10 +42,7 @@
             '*': './js/*'
         }
     });
-    System.import("init.js").then(function () {
-    //    alert("hi");
-    //    debugger;
-    });
+    System.import("init.js");
 </script>
 </body>
 </html>
