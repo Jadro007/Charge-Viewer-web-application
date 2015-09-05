@@ -11,6 +11,7 @@
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -21,6 +22,7 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="index.html" />
+    <Content Include="typings\system\system.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +30,7 @@
     <TypeScriptCompile Include="js\engine\callbacks\Func.ts" />
     <TypeScriptCompile Include="js\engine\events\EventInterface.ts" />
     <TypeScriptCompile Include="js\engine\files\FileCompleteCallback.ts" />
+    <TypeScriptCompile Include="js\engine\files\FileErrorCallback.ts" />
     <TypeScriptCompile Include="js\engine\files\FileEvent.ts" />
     <TypeScriptCompile Include="js\engine\files\FileProgressCallback.ts" />
     <TypeScriptCompile Include="js\engine\files\TextFileReader.ts" />
@@ -63,12 +66,12 @@
     <TypeScriptOutFile>all.js</TypeScriptOutFile>
     <TypeScriptSourceRoot>C:\Users\Tomáš\Documents\Visual Studio 2013\Projects\BC\js</TypeScriptSourceRoot>
     <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
-    <TypeScriptModuleKind>none</TypeScriptModuleKind>
+    <TypeScriptModuleKind>system</TypeScriptModuleKind>
     <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
     <TypeScriptOutDir />
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
-    <TypeScriptMapRoot />
+    <TypeScriptMapRoot>C:\Users\Tomáš\Documents\Visual Studio 2013\Projects\BC\js</TypeScriptMapRoot>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>

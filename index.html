@@ -4,13 +4,44 @@
 <head>
     <meta charset="utf-8" />
     <title>TypeScript HTML App</title>
-    <link rel="stylesheet" href="app.css" type="text/css" />
+    <link rel="stylesheet" href="app.css" type="text/css"/>
+    <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.91/traceur-runtime.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.src.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-alpha.36/angular2.dev.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-alpha.36/http.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-alpha.36/router.dev.js"></script>
 </head>
 <body>
     <h1>TypeScript HTML App</h1>
 
-    <div id="content"></div>
-    <input type="file" id="files" name="files[]" multiple/>
-    <script src="all.js"></script>
+    <div id="content">
+        <my-app></my-app>
+    </div>
+<input type="file" id="files" name="files[]" multiple/>
+   
+
+<script>
+    System.config({
+        'defaultJSExtensions': false,
+        'meta': {
+            '*.js': {
+                format: 'register'
+            },
+            'rx': {
+                format: "cjs"
+            }
+        },
+        'map': {
+            'rx': 'https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.5.3/rx.js'
+        },
+        'paths': {
+            '*': './js/*'
+        }
+    });
+    System.import("init.js").then(function () {
+    //    alert("hi");
+    //    debugger;
+    });
+</script>
 </body>
 </html>

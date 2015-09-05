@@ -43,5 +43,3 @@ declare module Files {
         private readError(file);
     }
 }
-declare var fileTextReader: Files.TextFileReader;
-declare function handleFileSelect(evt: any): void;
