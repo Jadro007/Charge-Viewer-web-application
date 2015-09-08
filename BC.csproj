@@ -22,14 +22,26 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="index.html" />
+    <Content Include="library\Angular2\angular2.dev.js" />
+    <Content Include="library\Angular2\http.js" />
+    <Content Include="library\Angular2\router.dev.js" />
+    <Content Include="library\Bootstrap-switch\bootstrap-switch.css" />
+    <Content Include="library\Bootstrap-switch\bootstrap-switch.js" />
+    <Content Include="library\Bootstrap\css\bootstrap.css" />
+    <Content Include="library\Bootstrap\js\bootstrap.js" />
     <Content Include="library\ChemDoodleWeb\ChemDoodleWeb-uis-unpacked.js" />
     <Content Include="library\ChemDoodleWeb\ChemDoodleWeb-unpacked.js" />
+    <Content Include="library\jQuery\jquery.js" />
+    <Content Include="library\RxJS\rx.js" />
+    <Content Include="library\SystemJS\system.src.js" />
+    <Content Include="library\TraceurRuntime\traceur-runtime.js" />
     <Content Include="typings\system\system.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="js\engine\callbacks\Action.ts" />
     <TypeScriptCompile Include="js\engine\callbacks\Func.ts" />
+    <TypeScriptCompile Include="js\engine\chemistry\structures\Molecule.ts" />
     <TypeScriptCompile Include="js\engine\events\EventInterface.ts" />
     <TypeScriptCompile Include="js\engine\files\FileCompleteCallback.ts" />
     <TypeScriptCompile Include="js\engine\files\FileErrorCallback.ts" />
@@ -37,6 +49,9 @@
     <TypeScriptCompile Include="js\engine\files\FileProgressCallback.ts" />
     <TypeScriptCompile Include="js\engine\files\TextFileReader.ts" />
     <TypeScriptCompile Include="js\init.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\UI\DTO\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

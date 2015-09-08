@@ -2,47 +2,174 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>TypeScript HTML App</title>
     <link rel="stylesheet" href="app.css" type="text/css"/>
-    <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.91/traceur-runtime.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.src.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-alpha.36/angular2.dev.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-alpha.36/http.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-alpha.36/router.dev.js"></script>
+    <link rel="stylesheet" href="./library/Bootstrap/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="./library/Bootstrap-switch/bootstrap-switch.css" type="text/css"/>
+    <script src="./library/TraceurRuntime/traceur-runtime.js"></script>
+    <script src="./library/SystemJS/system.src.js"></script>
+    <script src="./library/Angular2/angular2.dev.js"></script>
+    <script src="./library/Angular2/http.js"></script>
+    <script src="./library/Angular2/router.dev.js"></script>
+    <script src="./library/jQuery/jquery.js"></script>
+    <script src="./library/Bootstrap/js/bootstrap.js"></script>
+    <script src="./library/Bootstrap-switch/bootstrap-switch.js"></script>
 
-    <script src="http://web.chemdoodle.com/wp-includes/js/jquery/jquery.js?ver=1.7.2"></script>
     <script src="./library/ChemDoodleWeb/ChemDoodleWeb-unpacked.js"></script>
     <script src="./library/ChemDoodleWeb/ChemDoodleWeb-uis-unpacked.js"></script>
     <script src="./all.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.fn.bootstrapSwitch.defaults.size = 'small';
+            $(":input[type=checkbox]").bootstrapSwitch();
+            $(".upload").click(function() {
+                $(this).blur();
+                $("#files").click();
+            });
+        });
+
+    </script>
+    <style>
+       
+        html, body, .fullheight {
+            min-height: 100% !important;
+            height: 100%;
+        }
+
+        .fullwidth {
+            width: 100%;
+            min-width: 100%;
+            max-width: 100%;
+            left: 0;
+
+        }
+
+        #mainCanvas, #rightMenu, #leftMenu {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%; 
+        }
+
+        #mainCanvas {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        #rightMenu .bootstrap-switch-wrapper {
+            float: right;
+        }
+
+        #rightMenu .list-group-item {
+            line-height: 28px; 
+            height: 50px; 
+        }
+
+        .upload {
+            background-color: #286090;
+            color: white !important;
+        }
+
+        .upload:hover {
+            color: black !important;
+        }
+
+        .top {
+            top: 0px;
+        }
+
+        .right {
+            float: right;
+            
+        }
+
+        .bottom {
+            position: absolute;
+            bottom: 0px;
+        }
+
+        .bootstrap-switch-container {
+            display: inline;
+            vertical-align: central;
+        }
+    </style>
 </head>
 <body>
+    <div class="container fullwidth fullheight">
+        <div class="row fullheight">
+            <div class="col-md-2 fullheight" style="background-color: white">
+                <div class="list-group fullwidth" id="leftMenu">
+                    <a href="#" class="list-group-item">
+                        1DTK
+                    </a>
+                    <a href="#" class="list-group-item">
+                        3dtk
+                    </a>
+                    <button type="button" class="list-group-item upload btn-primary fullwidth">UPLOAD
+                    <span class="glyphicon glyphicon-upload right"></span>
+                    </button>
 
-    <div id="content">
-        <my-app></my-app>
+                    <div class="hidden">
+                        <input type="file" id="files" name="files[]" multiple />
+                    </div>
+                    </div>
+                </div>
+            <div class="col-md-8 fullheight"><my-app></my-app></div>
+            <div class="col-md-2 fullheight">
+                <div class="list-group fullwidth" id="rightMenu">
+                    <a href="#" class="list-group-item">
+                        Wireframe <input type="checkbox" />
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Sticks <input type="checkbox" />
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Balls and stick <input type="checkbox" />
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Charge <input type="checkbox" />
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Alpha trace <input type="checkbox"/>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Cartoon <input type="checkbox"/>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Van der Waals<input type="checkbox"/>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        Surface<input type="checkbox"/>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
     </div>
-<input type="file" id="files" name="files[]" multiple/>
-   
-
-<script>
-    System.config({
-        'defaultJSExtensions': false,
-        'meta': {
-            '*.js': {
-                format: 'register'
-            },
-            'rx': {
-                format: "cjs"
-            }
-        },
-        'map': {
-            'rx': 'https://cdnjs.cloudflare.com/ajax/libs/rxjs/2.5.3/rx.js'
-        },
-        'paths': {
-            '*': './js/*'
-        }
-    });
-    System.import("init.js");
-</script>
+        <script>
+            System.config({
+                'defaultJSExtensions': false,
+                'meta': {
+                    '*.js': {
+                        format: 'register'
+                    },
+                    'rx': {
+                        format: "cjs"
+                    }
+                },
+                'map': {
+                    'rx': '/library/RxJS/rx.js'
+                },
+                'paths': {
+                    '*': './js/*'
+                }
+            });
+            System.import("init.js");
+        </script>
 </body>
 </html>

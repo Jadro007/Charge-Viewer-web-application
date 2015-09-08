@@ -8,6 +8,13 @@ declare module Callbacks {
 }
 declare module Callbacks {
 }
+declare module Chemistry.Structures {
+    class Molecule {
+        molecule: any;
+        name: string;
+        constructor(molecule: any, name: string);
+    }
+}
 declare module Events {
     interface EventInterface {
     }
