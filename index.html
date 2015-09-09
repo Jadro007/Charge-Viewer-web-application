@@ -26,11 +26,13 @@
         $(document).ready(function () {
             $.fn.bootstrapSwitch.defaults.size = 'small';
             $(":input[type=checkbox]").bootstrapSwitch();
-            $(".upload").click(function() {
+
+            $("body").on("click", ".upload", function () {
                 $(this).blur();
                 $("#files").click();
             });
         });
+
 
     </script>
     <style>
@@ -99,58 +101,7 @@
     </style>
 </head>
 <body>
-    <div class="container fullwidth fullheight">
-        <div class="row fullheight">
-            <div class="col-md-2 fullheight" style="background-color: white">
-                <div class="list-group fullwidth" id="leftMenu">
-                    <a href="#" class="list-group-item">
-                        1DTK
-                    </a>
-                    <a href="#" class="list-group-item">
-                        3dtk
-                    </a>
-                    <button type="button" class="list-group-item upload btn-primary fullwidth">UPLOAD
-                    <span class="glyphicon glyphicon-upload right"></span>
-                    </button>
-
-                    <div class="hidden">
-                        <input type="file" id="files" name="files[]" multiple />
-                    </div>
-                    </div>
-                </div>
-            <div class="col-md-8 fullheight"><my-app></my-app></div>
-            <div class="col-md-2 fullheight">
-                <div class="list-group fullwidth" id="rightMenu">
-                    <a href="#" class="list-group-item">
-                        Wireframe <input type="checkbox" />
-                    </a>
-                    <a href="#" class="list-group-item">
-                        Sticks <input type="checkbox" />
-                    </a>
-                    <a href="#" class="list-group-item">
-                        Balls and stick <input type="checkbox" />
-                    </a>
-                    <a href="#" class="list-group-item">
-                        Charge <input type="checkbox" />
-                    </a>
-                    <a href="#" class="list-group-item">
-                        Alpha trace <input type="checkbox"/>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        Cartoon <input type="checkbox"/>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        Van der Waals<input type="checkbox"/>
-                    </a>
-                    <a href="#" class="list-group-item">
-                        Surface<input type="checkbox"/>
-                    </a>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
+<appComponent></appComponent>
         <script>
             System.config({
                 'defaultJSExtensions': false,

@@ -22,6 +22,10 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="index.html" />
+    <Content Include="js\UI\Components\AppComponent\appComponent.html" />
+    <Content Include="js\UI\Components\AppComponent\LeftMenuComponent\leftMenuComponent.html" />
+    <Content Include="js\UI\Components\AppComponent\LeftMenuComponent\UploadComponent\uploadComponent.html" />
+    <Content Include="js\UI\Components\AppComponent\RightMenuComponent\rightMenuComponent.html" />
     <Content Include="library\Angular2\angular2.dev.js" />
     <Content Include="library\Angular2\http.js" />
     <Content Include="library\Angular2\router.dev.js" />
@@ -41,7 +45,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="js\engine\callbacks\Action.ts" />
     <TypeScriptCompile Include="js\engine\callbacks\Func.ts" />
-    <TypeScriptCompile Include="js\engine\chemistry\structures\Molecule.ts" />
+    <TypeScriptCompile Include="js\engine\chemistry\services\MoleculeService.ts" />
+    <TypeScriptCompile Include="js\UI\Components\AppComponent\CanvasComponent\CanvasComponent.ts" />
+    <TypeScriptCompile Include="js\UI\Components\AppComponent\LeftMenuComponent\LeftMenuComponent.ts" />
+    <TypeScriptCompile Include="js\UI\Components\AppComponent\LeftMenuComponent\UploadComponent\UploadComponent.ts" />
+    <TypeScriptCompile Include="js\UI\DTO\Molecule.ts" />
     <TypeScriptCompile Include="js\engine\events\EventInterface.ts" />
     <TypeScriptCompile Include="js\engine\files\FileCompleteCallback.ts" />
     <TypeScriptCompile Include="js\engine\files\FileErrorCallback.ts" />
@@ -49,10 +57,9 @@
     <TypeScriptCompile Include="js\engine\files\FileProgressCallback.ts" />
     <TypeScriptCompile Include="js\engine\files\TextFileReader.ts" />
     <TypeScriptCompile Include="js\init.ts" />
+    <TypeScriptCompile Include="js\UI\Components\AppComponent\AppComponent.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="js\UI\DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
@@ -88,7 +95,8 @@
     <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
     <TypeScriptOutDir />
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
-    <TypeScriptMapRoot>C:\Users\Tomáš\Documents\Visual Studio 2013\Projects\BC\js</TypeScriptMapRoot>
+    <TypeScriptMapRoot>
+    </TypeScriptMapRoot>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
