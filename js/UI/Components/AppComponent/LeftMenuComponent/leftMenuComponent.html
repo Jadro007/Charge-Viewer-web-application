@@ -1,7 +1,7 @@
 ﻿<div class="list-group fullwidth" id="leftMenu">
     <uploadComponent></uploadComponent>
     
-    <a href="#" class="list-group-item" *ng-for="#molecule of moleculeService.molecules" (click)="moleculeService.renderMolecule(molecule)">
+    <a href="#" ng-class="{{isActive(molecule) ? 'active list-group-item' : 'list-group-item'}}" *ng-for="#molecule of moleculeService.molecules" (click)="moleculeService.renderMolecule(molecule)">
         {{molecule.name}}
     </a>
 

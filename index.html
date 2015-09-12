@@ -25,7 +25,6 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $.fn.bootstrapSwitch.defaults.size = 'small';
-            $(":input[type=checkbox]").bootstrapSwitch();
 
             $("body").on("click", ".upload", function () {
                 $(this).blur();
@@ -69,6 +68,17 @@
         #rightMenu .list-group-item {
             line-height: 28px; 
             height: 50px; 
+        }
+
+        #rightMenu .header, #rightMenu .header:hover {
+            background-color: #286090;
+            color: white !important;
+        }
+        
+        #leftMenu .active {
+            color: #555;
+            background-color: #EEE;
+            border: 1px solid #ddd; 
         }
 
         .upload {
