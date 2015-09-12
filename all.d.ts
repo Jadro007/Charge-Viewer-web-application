@@ -44,9 +44,35 @@ declare module Files {
     }
 }
 declare class CanvasSettings {
-    private wireframe;
+    private _wireframe;
+    private _sticks;
+    private _ballsAndSticks;
+    private _vanDerWaals;
+    private _surface;
+    private _charge;
+    private _atom;
+    private _alphaTrace;
+    private _cartoon;
+    private resetPrimaryStructure();
+    private resetColor();
     setWireframe(val: boolean): void;
     getWireframe(): boolean;
+    setSticks(val: boolean): void;
+    getSticks(): boolean;
+    setBallsAndSticks(val: boolean): void;
+    getBallsAndSticks(): boolean;
+    setVanDerWaals(val: boolean): void;
+    getVanDerWaals(): boolean;
+    setSurface(val: boolean): void;
+    getSurface(): boolean;
+    setCharge(val: boolean): void;
+    getCharge(): boolean;
+    setAtom(val: boolean): void;
+    getAtom(): boolean;
+    setAlphaTrace(val: boolean): void;
+    getAlphaTrace(): boolean;
+    setCartoon(val: boolean): void;
+    getCartoon(): boolean;
     private changeCallbacks;
     change(): void;
     listen(callback: any): void;

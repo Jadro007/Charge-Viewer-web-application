@@ -15,26 +15,63 @@ export class CanvasService {
             self.render();
         });
 
-        this.canvas = new ChemDoodle.TransformCanvas3D('mainCanvas', 896, 667);
+        this.canvas = new ChemDoodle.TransformCanvas3D('mainCanvas', 100, 100);
         this.render();
     }
 
+    resize(width, height) {
+        this.canvas.resize(width, height);
+    }
+
     render() {
+        this.canvas.specs.atoms_display = true;
+        this.canvas.specs.bonds_display = true;
+        this.canvas.specs.macro_displayAtoms = true;
+        this.canvas.specs.macro_displayBonds = true;
+
+      
         if (this.canvasSettings.getWireframe()) {
             this.canvas.specs.set3DRepresentation('Wireframe');
-        } else {    
-            this.canvas.specs.set3DRepresentation('Ball and Stick');
+        } else if (this.canvasSettings.getSticks()) {
+            this.canvas.specs.set3DRepresentation('Stick');
+        } else if(this.canvasSettings.getBallsAndSticks()) {
+            this.canvas.specs.set3DRepresentation('Ball and Stick');     
+        } else if(this.canvasSettings.getVanDerWaals()) {
+            this.canvas.specs.set3DRepresentation('van der Waals Spheres');     
+        } else if (this.canvasSettings.getSurface()) {
+            alert("Surface is not supported yet");
+        } else {
+            this.canvas.specs.atoms_display = false;
+            this.canvas.specs.bonds_display = false;
+            this.canvas.specs.macro_displayAtoms = false;
+            this.canvas.specs.macro_displayBonds = false;
+
         }
+
+        this.canvas.specs.compass_display = true;
 
         this.canvas.specs.backgroundColor = 'black';
         this.canvas.specs.deduceCovalentBonds = true;
         this.canvas.specs.deduceResidueBonds = true;
         //transformBallAndStick.specs.atoms_displayLabels_3D = true;
-        this.canvas.specs.macro_displayAtoms = true;
-        this.canvas.specs.macro_displayBonds = true;
+        
         //transformBallAndStick.specs.proteins_displayPipePlank = true;
-        this.canvas.specs.proteins_ribbonCartoonize = true;
-        this.canvas.specs.proteins_displayRibbon = true;
+        if (this.canvasSettings.getCartoon()) {
+            this.canvas.specs.proteins_ribbonCartoonize = true;
+            this.canvas.specs.proteins_displayRibbon = true;
+
+        } else {
+            this.canvas.specs.proteins_ribbonCartoonize = false;
+            this.canvas.specs.proteins_displayRibbon = false;
+        }
+
+        if (this.canvasSettings.getCharge()) {
+            alert("Charge is not supported yet");
+        }
+
+        if (this.canvasSettings.getAlphaTrace()) {
+            alert("Alpha trace is not supported yet");
+        }
         //transformBallAndStick.specs.proteins_displayBackbone = true;
         //this.canvas = ChemDoodle.TransformCanvas3D("main", 250, 250);
         this.canvas.repaint();
@@ -69,9 +106,8 @@ export class MoleculeService {
             this.active = molecule;
             this.moleculeRender.renderMolecule(molecule);
         }
-        if(this.molecules.indexOf(molecule) == -1) {
-            this.molecules.push(molecule);
-        }
+  
+        this.molecules.push(molecule);
     }
 
     renderMolecule(molecule: Chemistry.Structures.Molecule) { // todo: pass CanvasService to LeftMenuComponent and remove this method
@@ -154,10 +190,56 @@ export class RightMenuComponent {
     constructor( @Inject(CanvasSettings) canvasSettings: CanvasSettings) {
         this.canvasSettings = canvasSettings;
         $(":input[type=checkbox]").bootstrapSwitch();
-        $("#wireframe").on("switchChange.bootstrapSwitch", function(event, state) {
+
+        $("#wireframe").on("switchChange.bootstrapSwitch", function (event, state) {
             canvasSettings.setWireframe(state);
         });
 
+        $("#sticks").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setSticks(state);
+        });
+
+        $("#ballsAndSticks").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setBallsAndSticks(state);
+        });
+
+        $("#vanDerWaals").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setVanDerWaals(state);
+        });
+
+        $("#surface").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setSurface(state);
+        });
+
+        $("#atom").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setAtom(state);
+        });
+
+        $("#charge").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setCharge(state);
+        });
+
+        $("#alphaTrace").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setAlphaTrace(state);
+        });
+
+        $("#cartoon").on("switchChange.bootstrapSwitch", function (event, state) {
+            canvasSettings.setCartoon(state);
+        });
+
+
+
+        $(".primaryStructureGroup").on("click", function (event, state) {
+            $(".primaryStructureGroup").not(this).bootstrapSwitch("state", false);
+        });
+
+        $(".colorGroup").on("click", function (event, state) {
+            $(".colorGroup").not(this).bootstrapSwitch("state", false);
+        });
+
+        $(".bootstrap-switch-label").click(function() {
+            $(this).parent().parent().parent().click();
+        });
 
         $("#rightMenu .list-group-item").click(function() {
             $(this).find(":input").click();
@@ -181,7 +263,7 @@ export class LeftMenuComponent {
     constructor( @Inject(MoleculeService) moleculeService: MoleculeService) {
         this.moleculeService = moleculeService;
 
-    }
+    }ap
 
     isActive(molecule: Chemistry.Structures.Molecule): boolean {
         return molecule == this.moleculeService.getActiveMolecule();
@@ -200,15 +282,16 @@ export class LeftMenuComponent {
 export class AppComponent {
     //  private canvasComponent : CanvasComponent;
     constructor(
-       
+        @Inject(CanvasService) canvasService: CanvasService
     ) {
-        var self = this;
+        $(window).resize(function() {
+            var width = $("#canvasGrid").width();
+            var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            canvasService.resize(width, height);
+        }).resize();
 
     }
 
-    //loadMolecule(molecule: Molecule): void {
-    //    BallAndStick1.loadMolecule(molecule.molecule);
-    //}
 }
 
 bootstrap(AppComponent);

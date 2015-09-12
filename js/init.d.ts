@@ -3,6 +3,7 @@ export declare class CanvasService {
     private canvas;
     private canvasSettings;
     constructor(canvasSettings: CanvasSettings);
+    resize(width: any, height: any): void;
     render(): void;
     renderMolecule(molecule: Chemistry.Structures.Molecule): void;
     getCanvas(): any;
@@ -35,8 +36,9 @@ export declare class RightMenuComponent {
 export declare class LeftMenuComponent {
     private moleculeService;
     constructor(moleculeService: MoleculeService);
+    ap: any;
     isActive(molecule: Chemistry.Structures.Molecule): boolean;
 }
 export declare class AppComponent {
-    constructor();
+    constructor(canvasService: CanvasService);
 }
