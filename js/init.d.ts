@@ -1,4 +1,54 @@
 /// <reference path="../typings/angular2/angular2.d.ts" />
+export declare class Persistor {
+    save(key: string, value: any): void;
+    load(key: string): any;
+}
+export declare class CanvasSettingsPersistor {
+    private persistor;
+    private prefix;
+    constructor(persistor: Persistor);
+    save(canvasSettings: CanvasSettings): void;
+    private stringToBool(val);
+    load(canvasSettings: CanvasSettings): void;
+}
+export declare class CanvasSettings {
+    private persistor;
+    constructor(persistor: CanvasSettingsPersistor);
+    private promoteChanges;
+    setPromoteChanges(val: boolean): void;
+    private _wireframe;
+    private _sticks;
+    private _ballsAndSticks;
+    private _vanDerWaals;
+    private _surface;
+    private _charge;
+    private _atom;
+    private _alphaTrace;
+    private _cartoon;
+    private resetPrimaryStructure();
+    private resetColor();
+    setWireframe(val: any): void;
+    getWireframe(): boolean;
+    setSticks(val: boolean): void;
+    getSticks(): boolean;
+    setBallsAndSticks(val: boolean): void;
+    getBallsAndSticks(): boolean;
+    setVanDerWaals(val: boolean): void;
+    getVanDerWaals(): boolean;
+    setSurface(val: boolean): void;
+    getSurface(): boolean;
+    setCharge(val: boolean): void;
+    getCharge(): boolean;
+    setAtom(val: boolean): void;
+    getAtom(): boolean;
+    setAlphaTrace(val: boolean): void;
+    getAlphaTrace(): boolean;
+    setCartoon(val: boolean): void;
+    getCartoon(): boolean;
+    private changeCallbacks;
+    change(): void;
+    listen(callback: any): void;
+}
 export declare class CanvasService {
     private canvas;
     private canvasSettings;
