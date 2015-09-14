@@ -7,6 +7,7 @@ export declare class CanvasSettingsPersistor {
     private persistor;
     private prefix;
     constructor(persistor: Persistor);
+    haveBeenPersisted(): boolean;
     save(canvasSettings: CanvasSettings): void;
     private stringToBool(val);
     load(canvasSettings: CanvasSettings): void;
@@ -25,7 +26,9 @@ export declare class CanvasSettings {
     private _atom;
     private _alphaTrace;
     private _cartoon;
+    private setDefaultPrimaryStructure();
     private resetPrimaryStructure();
+    private setDefaultColor();
     private resetColor();
     setWireframe(val: any): void;
     getWireframe(): boolean;
