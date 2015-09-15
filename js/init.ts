@@ -511,6 +511,11 @@ export class RightMenuComponent {
             $(this).parent().find(":input").click().trigger("switchChange.bootstrapSwitch").click();
         });
 
+        $(".bootstrap-switch-handle-off, .bootstrap-switch-handle-on").click(function(e) {
+            e.stopPropagation();
+            $(this).parent().find(":input").click().click();
+        });
+
         $("#rightMenu .list-group-item").click(function() {
             $(this).find(":input").click();
         });
