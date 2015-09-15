@@ -506,8 +506,9 @@ export class RightMenuComponent {
             $(".colorGroup").not(this).bootstrapSwitch("state", false);
         });
 
-        $(".bootstrap-switch-label").click(function() {
-            $(this).parent().parent().parent().click();
+        $(".bootstrap-switch-label").click(function (e) {
+            e.stopPropagation();
+            $(this).parent().find(":input").click().trigger("switchChange.bootstrapSwitch").click();
         });
 
         $("#rightMenu .list-group-item").click(function() {
