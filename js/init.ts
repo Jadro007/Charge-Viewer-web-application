@@ -296,7 +296,7 @@ export class CanvasService {
         } else if(this.canvasSettings.getVanDerWaals()) {
             this.canvas.specs.set3DRepresentation('van der Waals Spheres');     
         } else if (this.canvasSettings.getSurface()) {
-            alert("Surface is not supported yet");
+
         } else {
             this.canvas.specs.atoms_display = false;
             this.canvas.specs.bonds_display = false;
@@ -322,11 +322,11 @@ export class CanvasService {
         }
 
         if (this.canvasSettings.getCharge()) {
-            alert("Charge is not supported yet");
+
         }
 
         if (this.canvasSettings.getAlphaTrace()) {
-            alert("Alpha trace is not supported yet");
+
         }
         //transformBallAndStick.specs.proteins_displayBackbone = true;
         //this.canvas = ChemDoodle.TransformCanvas3D("main", 250, 250);
@@ -477,17 +477,20 @@ export class RightMenuComponent {
         }).bootstrapSwitch("state", canvasSettings.getSurface());
 
         $("#atom").on("switchChange.bootstrapSwitch", function (event, state) {
-            canvasSettings.setAtom(state);
             if (!state) {
                 $("#charge").bootstrapSwitch("state", true);
             }
+
+            canvasSettings.setAtom(state);
         }).bootstrapSwitch("state", canvasSettings.getAtom());
 
         $("#charge").on("switchChange.bootstrapSwitch", function (event, state) {
-            canvasSettings.setCharge(state);
             if (!state) {
                 $("#atom").bootstrapSwitch("state", true);
             }
+
+            canvasSettings.setCharge(state);
+
         }).bootstrapSwitch("state", canvasSettings.getCharge());
 
         $("#alphaTrace").on("switchChange.bootstrapSwitch", function (event, state) {
@@ -500,10 +503,6 @@ export class RightMenuComponent {
 
         $(".primaryStructureGroup").on("click", function (event, state) {
             $(".primaryStructureGroup").not(this).bootstrapSwitch("state", false);
-        });
-
-        $(".colorGroup").on("click", function (event, state) {
-            $(".colorGroup").not(this).bootstrapSwitch("state", false);
         });
 
         $(".bootstrap-switch-label").click(function (e) {
